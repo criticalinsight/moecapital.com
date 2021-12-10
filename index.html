@@ -17,6 +17,180 @@
 <meta name="twitter:description" content=" MoeCapital provides investment research and strategy,covering stocks,international equities and alternative investments.">
 </head>
 	<style> 
+		nav {
+  position: -webkit-sticky;
+  position: sticky;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  left: 0;
+  padding: 48px 64px;
+  -webkit-backdrop-filter: blur(20px);
+          backdrop-filter: blur(20px);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+nav::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: var(--dark);
+  z-index: 5;
+  opacity: 0.5;
+}
+nav::after {
+    display: none;
+  }
+  nav header {
+    position: fixed;
+    z-index: 5;
+    top: 0;
+    right: 0;
+    left: 0;
+    padding: 24px;
+    -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(20px);
+  }
+  nav header h1,
+  nav header ul,
+  nav header h2,
+  nav header hr {
+    z-index: 15;
+  }
+  nav header::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: var(--dark);
+    z-index: 10;
+    opacity: 0.5;
+  }
+  nav form {
+    padding: 0 24px 24px;
+    margin-top: 80px;
+    width: 100%;
+    z-index: 0 !important;
+  }
+}
+
+nav header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  z-index: 15;
+}
+
+.home nav header h1 {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+nav header h1 a {
+  display: block;
+  width: 32px;
+  height: 32px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-indent: 150%;
+  background: var(--light);
+  -webkit-mask-image: url(../img/logo.svg);
+          mask-image: url(../img/logo.svg);
+  -webkit-mask-size: 32px;
+          mask-size: 32px;
+}
+
+nav header h1 a:hover, nav header h1 a:focus {
+  opacity: 0.75;
+}
+
+nav header h1 a:active {
+  opacity: 0.5;
+}
+
+nav header hr {
+  width: 2px;
+  height: 24px;
+  border-radius: 1px;
+  margin: 0 32px;
+  background: var(--light);
+  opacity: 0.5;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+
+@media (max-width: 960px) {
+  nav header hr {
+    margin: 0 24px;
+  }
+}
+
+@media (max-width: 640px) {
+  .home nav header hr {
+    display: none;
+  }
+}
+
+nav header h2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-width: 0;
+  margin-right: 16px;
+}
+
+@media (max-width: 640px) {
+  nav header h2 {
+    margin-right: 0;
+  }
+}
+
+nav header h2 .name {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 700;
+  line-height: 32px;
+  margin-right: 16px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+nav header ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+nav header ul li {
+  margin-left: 24px;
+}
+
+nav header ul li a:hover, nav header ul li a:focus {
+  text-decoration: underline;
+}
+
+nav header ul li a:active {
+  opacity: 0.75;
+}
+		
 		@media (prefers-color-scheme: dark){
 		body {color:#fff;background:#000}
 		a:link {color:#9cf}
@@ -24,6 +198,10 @@
 		a:visited {color:#c9f}
 	}
 	body{
+		ext-rendering: optimizeLegibility;
+                -webkit-font-feature-settings: "liga" on;
+                font-feature-settings: "liga" on;
+                -moz-font-feature-settings: "liga" on;
 		margin:1em auto;
 		max-width:30em;
 		padding:0 .62em;
@@ -31,7 +209,9 @@
 		background: #001724;
 		color: #f5f5f5;
 	        letter-spacing: .01em;
-		line-height: 1;
+		line-height: 150%;
+                min-height: 100vh;
+                scroll-behavior: smooth;
 		
 	}
 	a {
