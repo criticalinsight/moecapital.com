@@ -38,6 +38,34 @@
 	h3 {
 		font-size:2rem;
 	}
+		.item {
+  border-bottom: 1px solid #555;
+  cursor: pointer;
+}
+
+.item:last-child {
+  border-bottom: none;
+}
+
+.title {
+  width: 100%;
+  padding: 1rem;
+  font-size: 30px;
+}
+.item.active .title,
+.title:hover {
+  color: red;
+}
+
+.content {
+  height: 0;
+  overflow: hidden;
+}
+
+.content p {
+  margin: 0;
+  padding: 1rem;
+}
 </style>
 <article>
 	<header>
@@ -48,4 +76,52 @@
 	</p>
 	<p> We are known for providing timely high signal market moving news and financial insights on our Twitter Channel: <a href="https://twitter.com/MoneyAcademyKE" >@MoneyacademyKE</a>.
 	</p>
+<div class="item">
+  <div class="title">Element One</div>
+  <div class="content">
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia labore obcaecati animi unde cupiditate tenetur laborum sequi saepe veritatis enim sunt eius nisi voluptatum quae inventore impedit vero distinctio accusantium at, deleniti in? Alias nisi deleniti qui veritatis aliquam rem maxime aspernatur! Quas maxime quam nam magnam nulla quisquam architecto! Obcaecati dicta voluptatem excepturi consequuntur molestiae, maxime omnis ullam quisquam harum optio accusantium iste suscipit neque, at voluptatibus aperiam quam.</p>
+  </div>
+</div>
+<div class="item">
+  <div class="title">Element Two</div>
+  <div class="content">
+    <p>Libero possimus alias laudantium animi amet asperiores tempore facilis dolores voluptates maxime sapiente nam et perspiciatis at ea dolorem illum veniam voluptatibus quia natus, architecto maiores, porro rerum numquam. Iusto itaque amet, obcaecati voluptatum rem blanditiis reprehenderit quae dolores labore. Soluta consectetur alias laboriosam voluptatum tenetur. Eveniet iusto, sint architecto officiis aliquid ullam quibusdam facilis minima deserunt porro voluptate voluptatum ducimus expedita molestias rerum hic maxime mollitia veniam nemo dolor.</p>
+  </div>
+</div>
+<div class="item">
+  <div class="title">Element Three</div>
+  <div class="content">
+    <p>Expedita omnis a, vero est distinctio voluptatibus quos quo, maiores iusto sequi amet culpa ut inventore. Harum iusto provident ea nostrum atque fugit culpa eaque dolores unde, recusandae cumque dolorem accusantium sequi perspiciatis natus hic consectetur ipsa aliquid nemo ullam facilis repellat incidunt. Ad a, nisi, maxime incidunt dolor iure eos quod in recusandae sit iste nesciunt harum perspiciatis, alias at veritatis iusto praesentium eum explicabo amet deleniti non. Sapiente.</p>
+  </div>
+</div>
+	<script>
+		console.clear();
+
+const items = gsap.utils.toArray(".item");
+let currentItem = null;
+
+items.forEach((e, i) => {
+  const content = e.querySelector(".content");
+  const t = gsap.to(content, {
+    height: "auto",
+    paused: true
+  });
+
+  e._accordionTween = t;
+
+  e.addEventListener("click", () => {
+    if (currentItem !== null) {
+      items[currentItem].classList.toggle("active");
+      if (currentItem === i) {
+        currentItem = null;
+        return t.reverse();
+      }
+      items[currentItem]._accordionTween.reverse();
+    }
+    e.classList.toggle("active");
+    t.play();
+    currentItem = i;
+  });
+});
+</script>
 </article>
